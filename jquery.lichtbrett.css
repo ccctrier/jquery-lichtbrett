@@ -1,0 +1,17 @@
+.jq-lichtbrett {
+  background: #000;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none; }
+  .jq-lichtbrett table {
+    width: 100%;
+    border-spacing: 0; }
+    .jq-lichtbrett table tr td {
+      text-align: center;
+      vertical-align: center;
+      border-collapse: collapse;
+      border: 1px solid #aaa;
+      margin: 0px;
+      padding: 0px; }
+      .jq-lichtbrett table tr td .spacer {
+        width: 100%; }

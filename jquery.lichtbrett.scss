@@ -1,0 +1,30 @@
+@import "compass/css3/user-interface";
+
+.jq-lichtbrett {
+
+	background: #000;
+	@include user-select(none);
+
+	table {
+		width: 100%;
+		border-spacing:0;
+
+		tr {
+
+			td {
+				text-align: center;
+				vertical-align: center;
+				border-collapse: collapse;
+				border: 1px solid #aaa;
+				margin: 0px;
+				padding: 0px;
+
+				.spacer {
+					width: 100%;
+				}
+			}
+
+		}
+	}
+
+}

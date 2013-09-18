@@ -1,0 +1,26 @@
+<html>
+	<head>
+		<title>jQuery Lichtbrett Demo</title>
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<script src="jquery.lichtbrett.js"></script>
+		<link rel="stylesheet" type="text/css" href="jquery.lichtbrett.css">
+	</head>
+	<body>
+
+		<div class="lichtbrett"></div>
+		<script type="text/javascript">
+
+			$('.lichtbrett').lichtbrett({
+				clickable: true
+			});
+
+			$('.lichtbrett').lichtbrett([
+
+                [ 'red', 'red', 'blue', 'yellow', 'green' ],
+                [ 'yellow', 'green', '#CCC' ]
+
+            ]);
+
+		</script>
+	</body>
+</html>
