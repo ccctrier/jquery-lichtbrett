@@ -7,19 +7,42 @@
 	</head>
 	<body>
 
-		<div class="lichtbrett"></div>
+		<h1>Color-Picker</h1>
+		<div id="colorpicker">
+			<div class="color active" style="background: red;"></div>
+			<div class="color" style="background: green;"></div>
+			<div class="color" style="background: blue;"></div>
+			<div class="color" style="background: yellow;"></div>
+		</div>
+		
+		<h1>Lichtbrett</h1>
+		<div id="lichtbrett"></div>
 		<script type="text/javascript">
 
-			$('.lichtbrett').lichtbrett({
+			var $lichtbrett = $('#lichtbrett');
+
+			// initialize Lichtbrett
+			$lichtbrett.lichtbrett({
 				clickable: true
 			});
 
-			$('.lichtbrett').lichtbrett([
-
+			// set some sample colors
+			$lichtbrett.lichtbrett([
                 [ 'red', 'red', 'blue', 'yellow', 'green' ],
                 [ 'yellow', 'green', '#CCC' ]
-
             ]);
+
+			// listen to events
+			$('.color').click(function() {
+
+				$(this).addClass('active');
+				$('.color').not($(this)).removeClass('active');
+
+				$lichtbrett.lichtbrett({
+					color: $(this).css('background-color')
+				});
+
+			});
 
 		</script>
 	</body>

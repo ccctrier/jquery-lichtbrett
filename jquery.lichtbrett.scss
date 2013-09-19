@@ -28,3 +28,23 @@
 	}
 
 }
+
+#colorpicker {
+	overflow: hidden;
+	width: 100%;
+	text-align: center;
+
+	.color {
+		float: left;
+		width: 32px;
+		height: 32px;
+		margin: 16px;
+		pointer: cursor;
+		padding: 2px;
+	}
+
+	.color.active {
+		border: 2px solid black;
+		padding: 0px;
+	}
+}

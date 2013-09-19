@@ -5,7 +5,8 @@
     var pluginName = 'lichtbrett',
         defaults = {
             x: 8,
-            y: 16
+            y: 16,
+            color: 'white'
         };
 
     function Plugin( element, options ) {
@@ -56,10 +57,10 @@
                     .attr('jq-lichtbrett-row', x)
                     .attr('jq-lichtbrett-col', y)
                     .bind('click', function(evnt) {
-                        self.onClickCell(evnt, 'white');
+                        self.onClickCell(evnt, self.options.color);
                     })
                     .bind('dragover', function(evnt) {
-                        self.onClickCell(evnt, 'white');
+                        self.onClickCell(evnt, self.options.color);
                     })
                     .bind('contextmenu', function(evnt) {
                         evnt.preventDefault();
@@ -104,6 +105,12 @@
 
         },
 
+        setOptions: function(options) {
+
+            this.options = $.extend(this.options, options);
+
+        },
+
         onClickCell: function(evnt, color) {
             var $t = $(evnt.currentTarget);
             
@@ -123,7 +130,11 @@
 
             } else {
                 
-                $.data(this, "plugin_" + pluginName).setData(options);
+                if(options instanceof Array) {
+                    $.data(this, "plugin_" + pluginName).setData(options);
+                } else {
+                    $.data(this, "plugin_" + pluginName).setOptions(options);
+                }
 
             }
 
