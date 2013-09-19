@@ -12,7 +12,15 @@
 
 		<h1>Color-Picker</h1>
 		<div id="colorpicker">
-			<div class="color"><input type='color' name='color' /></div>
+			<div class="color"><input type='custom' id="custom" /></div>
+			<script>
+			$("#custom").spectrum({
+			    color: "#f00",
+				showAlpha: true,
+				showButtons: false,
+				showInput: true
+			});
+			</script>
 		</div>
 		
 		<h1>Lichtbrett</h1>
