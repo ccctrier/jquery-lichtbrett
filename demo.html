@@ -17,6 +17,10 @@
 		
 		<h1>Lichtbrett</h1>
 		<div id="lichtbrett"></div>
+
+		<h1>Output</h1>
+		<textarea id="output"></textarea>
+
 		<script type="text/javascript">
 
 			var $lichtbrett = $('#lichtbrett');
@@ -42,6 +46,10 @@
 					color: $(this).css('background-color')
 				});
 
+			});
+
+			$lichtbrett.bind('change', function(evnt, data) {
+				$('#output').text(JSON.stringify(data));
 			});
 
 		</script>

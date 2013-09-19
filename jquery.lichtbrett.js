@@ -76,11 +76,17 @@
 
         },
 
-        set: function(row, col, color) {
+        set: function(row, col, color, trigger) {
+
+            trigger = (trigger===undefined) ? true : (trigger===true);
 
             if(this.$cells[row] && this.$cells[row][col]) {
 
                 this.$cells[row][col].css('background-color', color);
+
+                if(trigger)
+                    this.onChange();
+
                 return true;
 
             }
@@ -97,12 +103,33 @@
 
                 $.each(data[row], function(col) {
                     
-                    self.set(row, col, data[row][col]);
+                    self.set(row, col, data[row][col], false);
 
                 });
 
             });
 
+            this.onChange();
+
+        },
+
+        getData: function() {
+
+            var out = [],
+                self = this;
+
+            $.each(this.$cells, function(row) {
+
+                // add new row to output
+                out.push([]);
+
+                $.each(self.$cells[row], function(col) {
+                    out[out.length-1].push(self.$cells[row][col].css('background-color'));
+                });
+
+            });
+
+            return out;
         },
 
         setOptions: function(options) {
@@ -115,6 +142,10 @@
             var $t = $(evnt.currentTarget);
             
             this.set($t.attr('jq-lichtbrett-row'), $t.attr('jq-lichtbrett-col'), color);
+        },
+
+        onChange: function() {
+            this.$el.trigger('change', [this.getData()]);
         }
 
     };
